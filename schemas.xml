@@ -1,0 +1,12 @@
+<!-- Schema index for tools -->
+<locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0">
+
+  <!-- W3C schemas -->
+  <namespace ns="http://www.w3.org/2001/XMLSchema" uri="w3c/XMLSchema.rnc"/>
+  <namespace ns="http://www.w3.org/2001/XMLSchema-datatypes" uri="w3c/XMLSchema-datatypes.rnc"/>
+  <namespace ns="http://www.w3.org/2001/XMLSchema-instance" uri="w3c/XMLSchema-instance.rnc"/>
+
+  <!-- xmltoman man-page generator -->
+  <namespace ns="http://xmltoman.sourceforge.net/schema" uri="xmltoman/xmltoman.rnc"/>
+
+</locatingRules>
