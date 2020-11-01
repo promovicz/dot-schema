@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This file is part of xmltoman.
+  
+  xmltoman is free software; you can redistribute it and/or modify it under
+  the terms of the GNU General Public License as published by the Free
+  Software Foundation; either version 2 of the License, or (at your
+  option) any later version.
+  
+  xmltoman is distributed in the hope that it will be useful, but WITHOUT
+  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+  for more details.
+  
+  You should have received a copy of the GNU General Public License
+  along with xmltoman; if not, write to the Free Software Foundation,
+  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://xmltoman.sourceforge.net/schema" xmlns:schema="http://xmltoman.sourceforge.net/schema">
+  <xs:element name="manpage">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="schema:synopsis"/>
+        <xs:element ref="schema:description"/>
+        <xs:element ref="schema:section"/>
+        <xs:element ref="schema:options"/>
+        <xs:element ref="schema:seealso"/>
+      </xs:choice>
+      <xs:attribute name="name" use="required"/>
+      <xs:attribute name="section" use="required"/>
+      <xs:attribute name="desc"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="arg" type="xs:string"/>
+  <xs:element name="p">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="schema:arg"/>
+        <xs:element ref="schema:url"/>
+        <xs:element ref="schema:manref"/>
+        <xs:element ref="schema:opt"/>
+        <xs:element ref="schema:file"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="synopsis">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="schema:cmd"/>
+        <xs:element ref="schema:p"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="description">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="schema:p"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="section">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="schema:p"/>
+        <xs:element ref="schema:option"/>
+      </xs:choice>
+      <xs:attribute name="name" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="option">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="schema:p"/>
+        <xs:element ref="schema:optdesc"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="optdesc">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:p"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cmd">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:arg"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="options">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="schema:p"/>
+        <xs:element ref="schema:option"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="seealso">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="schema:p"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="opt" type="xs:string"/>
+  <xs:element name="file" type="xs:string"/>
+  <xs:element name="manref">
+    <xs:complexType>
+      <xs:attribute name="name" use="required"/>
+      <xs:attribute name="section" use="required"/>
+      <xs:attribute name="href"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="url">
+    <xs:complexType>
+      <xs:attribute name="href" use="required"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,54 @@
+# This file is part of xmltoman.
+# 
+# xmltoman is free software; you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free
+# Software Foundation; either version 2 of the License, or (at your
+# option) any later version.
+# 
+# xmltoman is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+# for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with xmltoman; if not, write to the Free Software Foundation,
+# Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
+
+default namespace = "http://xmltoman.sourceforge.net/schema"
+
+start = manpage
+manpage =
+  element manpage {
+    attribute name { text },
+    attribute section { text },
+    attribute desc { text }?,
+    (synopsis | description | section | options | seealso)*
+  }
+arg = element arg { text }
+p = element p { (text | arg | url | manref | opt | file)* }
+synopsis = element synopsis { (cmd | p)+ }
+description = element description { p+ }
+section =
+  element section {
+    attribute name { text },
+    (p | option)*
+  }
+option = element option { (text | p | optdesc)* }
+optdesc = element optdesc { (text | p)* }
+cmd = element cmd { (text | arg)* }
+options = element options { (p | option)* }
+seealso = element seealso { p* }
+opt = element opt { text }
+file = element file { text }
+manref =
+  element manref {
+    attribute name { text },
+    attribute section { text },
+    attribute href { text }?,
+    empty
+  }
+url =
+  element url {
+    attribute href { text },
+    empty
+  }

@@ -1,0 +1,88 @@
+<?xml encoding="UTF-8"?>
+
+<!--
+This file is part of xmltoman.
+
+xmltoman is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free
+Software Foundation; either version 2 of the License, or (at your
+option) any later version.
+
+xmltoman is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+for more details.
+
+You should have received a copy of the GNU General Public License
+along with xmltoman; if not, write to the Free Software Foundation,
+Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
+-->
+
+<!ELEMENT ns1:manpage (ns1:synopsis|ns1:description|ns1:section
+                       |ns1:options|ns1:seealso)*>
+<!ATTLIST ns1:manpage
+  xmlns:ns1 CDATA #FIXED 'http://xmltoman.sourceforge.net/schema'
+  name CDATA #REQUIRED
+  section CDATA #REQUIRED
+  desc CDATA #IMPLIED>
+
+<!ELEMENT ns1:arg (#PCDATA)>
+<!ATTLIST ns1:arg
+  xmlns:ns1 CDATA #FIXED 'http://xmltoman.sourceforge.net/schema'>
+
+<!ELEMENT ns1:p (#PCDATA|ns1:arg|ns1:url|ns1:manref|ns1:opt|ns1:file)*>
+<!ATTLIST ns1:p
+  xmlns:ns1 CDATA #FIXED 'http://xmltoman.sourceforge.net/schema'>
+
+<!ELEMENT ns1:synopsis (ns1:cmd|ns1:p)+>
+<!ATTLIST ns1:synopsis
+  xmlns:ns1 CDATA #FIXED 'http://xmltoman.sourceforge.net/schema'>
+
+<!ELEMENT ns1:description (ns1:p)+>
+<!ATTLIST ns1:description
+  xmlns:ns1 CDATA #FIXED 'http://xmltoman.sourceforge.net/schema'>
+
+<!ELEMENT ns1:section (ns1:p|ns1:option)*>
+<!ATTLIST ns1:section
+  xmlns:ns1 CDATA #FIXED 'http://xmltoman.sourceforge.net/schema'
+  name CDATA #REQUIRED>
+
+<!ELEMENT ns1:option (#PCDATA|ns1:p|ns1:optdesc)*>
+<!ATTLIST ns1:option
+  xmlns:ns1 CDATA #FIXED 'http://xmltoman.sourceforge.net/schema'>
+
+<!ELEMENT ns1:optdesc (#PCDATA|ns1:p)*>
+<!ATTLIST ns1:optdesc
+  xmlns:ns1 CDATA #FIXED 'http://xmltoman.sourceforge.net/schema'>
+
+<!ELEMENT ns1:cmd (#PCDATA|ns1:arg)*>
+<!ATTLIST ns1:cmd
+  xmlns:ns1 CDATA #FIXED 'http://xmltoman.sourceforge.net/schema'>
+
+<!ELEMENT ns1:options (ns1:p|ns1:option)*>
+<!ATTLIST ns1:options
+  xmlns:ns1 CDATA #FIXED 'http://xmltoman.sourceforge.net/schema'>
+
+<!ELEMENT ns1:seealso (ns1:p)*>
+<!ATTLIST ns1:seealso
+  xmlns:ns1 CDATA #FIXED 'http://xmltoman.sourceforge.net/schema'>
+
+<!ELEMENT ns1:opt (#PCDATA)>
+<!ATTLIST ns1:opt
+  xmlns:ns1 CDATA #FIXED 'http://xmltoman.sourceforge.net/schema'>
+
+<!ELEMENT ns1:file (#PCDATA)>
+<!ATTLIST ns1:file
+  xmlns:ns1 CDATA #FIXED 'http://xmltoman.sourceforge.net/schema'>
+
+<!ELEMENT ns1:manref EMPTY>
+<!ATTLIST ns1:manref
+  xmlns:ns1 CDATA #FIXED 'http://xmltoman.sourceforge.net/schema'
+  name CDATA #REQUIRED
+  section CDATA #REQUIRED
+  href CDATA #IMPLIED>
+
+<!ELEMENT ns1:url EMPTY>
+<!ATTLIST ns1:url
+  xmlns:ns1 CDATA #FIXED 'http://xmltoman.sourceforge.net/schema'
+  href CDATA #REQUIRED>
