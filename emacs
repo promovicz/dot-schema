@@ -1,0 +1,1 @@
+/usr/share/emacs/26.1/etc/schema
